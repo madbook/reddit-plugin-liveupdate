@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(name='reddit_liveupdate',
-    description='reddit live update threads',
+    description='reddit live threads',
     version='0.1',
     author='Neil Williams',
     author_email='neil@reddit.com',

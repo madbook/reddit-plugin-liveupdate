@@ -78,18 +78,18 @@ from reddit_liveupdate.validators import (
 INVITE_MESSAGE = """\
 **oh my! you are invited to become a contributor to [%(title)s](%(url)s)**.
 
-*to accept* visit the [contributors page for the stream](%(url)s/contributors)
-and click "accept".
+*to accept* visit the [contributors page for the live
+thread](%(url)s/contributors) and click "accept".
 
 *otherwise,* if you did not expect to receive this, you can simply ignore this
 invitation or report it.
 """
 REPORTED_MESSAGE = """\
-The live update stream [%(title)s](%(url)s) was just reported for %(reason)s.
-Please see the [reports page](/live/reported) for more information.
+The live thread [%(title)s](%(url)s) was just reported for %(reason)s.  Please
+see the [reports page](/live/reported) for more information.
 """
 CREATION_MESSAGE = """\
-hello! a live update stream has been created for you.
+hello! a live thread has been created for you.
 
 * you can make updates from [the update page](%(base_url)s)
 * make sure to customize the title and sidebar on [the settings
@@ -223,7 +223,7 @@ class LiveUpdateController(RedditController):
 
         if c.liveupdate_event.banned and not c.user_is_admin:
             error_page = RedditError(
-                title=_("this stream has been banned"),
+                title=_("this live thread has been banned"),
                 message="",
                 image="subreddit-banned.png",
             )
@@ -586,7 +586,7 @@ class LiveUpdateController(RedditController):
         VLiveUpdateContributorWithPermission("close"),
         VModhash(),
     )
-    def POST_close_stream(self, form, jquery):
+    def POST_close_thread(self, form, jquery):
         c.liveupdate_event.state = "complete"
         c.liveupdate_event._commit()
 
