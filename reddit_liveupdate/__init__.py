@@ -90,12 +90,18 @@ class LiveUpdate(Plugin):
         )
 
         mc(
+            "/live",
+            controller="liveupdateevents",
+            action="home",
+            conditions={"function": not_in_sr},
+        )
+
+        mc(
             "/live/:filter",
             action="listing",
-            filter="open",
             controller="liveupdateevents",
             conditions={"function": not_in_sr},
-            requirements={"filter": "closed|reported"},
+            requirements={"filter": "open|closed|reported"},
         )
 
         mc(
