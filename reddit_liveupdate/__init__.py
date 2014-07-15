@@ -83,16 +83,16 @@ class LiveUpdate(Plugin):
 
     def add_routes(self, mc):
         mc(
-            "/live/create",
+            "/live",
             controller="liveupdateevents",
-            action="create",
+            action="home",
             conditions={"function": not_in_sr},
         )
 
         mc(
-            "/live",
+            "/live/create",
             controller="liveupdateevents",
-            action="home",
+            action="create",
             conditions={"function": not_in_sr},
         )
 
